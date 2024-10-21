@@ -63,7 +63,7 @@ public class ContactService {
             if (!Files.exists(fileStorageLocation)) {
                 Files.createDirectories(fileStorageLocation);
             }
-            Files.copy(image.getInputStream(), fileStorageLocation.resolve(id + fileExtension.apply(image.getOriginalFilename())), REPLACE_EXISTING);
+            Files.copy(image.getInputStream(), fileStorageLocation.resolve(filename), REPLACE_EXISTING);
             return ServletUriComponentsBuilder
                 .fromCurrentContextPath().path("/contacts/image/" + id + fileExtension.apply(image.getOriginalFilename()))
                 .toUriString();
