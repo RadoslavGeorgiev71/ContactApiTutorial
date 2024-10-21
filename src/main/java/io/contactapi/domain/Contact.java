@@ -1,4 +1,4 @@
-package domain;
+package io.contactapi.domain;
 
 
 import com.fasterxml.jackson.annotation.JsonInclude;
