@@ -46,6 +46,7 @@ public class ContactService {
     }
 
     public String uploadPhoto(String id, MultipartFile file) {
+        log.info("Saving picture for user ID: {}", id);
         Contact contact = getContact(id);
         String photoUrl = photoFunction.apply(id, file);
         contact.setPhotoUrl(photoUrl);
@@ -63,7 +64,7 @@ public class ContactService {
             if (!Files.exists(fileStorageLocation)) {
                 Files.createDirectories(fileStorageLocation);
             }
-            Files.copy(image.getInputStream(), fileStorageLocation.resolve(id + fileExtension.apply(image.getOriginalFilename())), REPLACE_EXISTING);
+            Files.copy(image.getInputStream(), fileStorageLocation.resolve(filename), REPLACE_EXISTING);
             return ServletUriComponentsBuilder
                 .fromCurrentContextPath().path("/contacts/image/" + id + fileExtension.apply(image.getOriginalFilename()))
                 .toUriString();

@@ -12,13 +12,15 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.UuidGenerator;
 
+import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_DEFAULT;
+
 @Entity
 @Table(name = "contacts")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonInclude(JsonInclude.Include.NON_DEFAULT)
+@JsonInclude(NON_DEFAULT)
 public class Contact {
     @Id
     @UuidGenerator
